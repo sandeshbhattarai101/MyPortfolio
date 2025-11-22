@@ -540,17 +540,6 @@ def local_css():
         font-weight: 500;
     }
     
-    /* Progress Bar Styling */
-    .stProgress > div > div > div > div {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        border-radius: 10px;
-    }
-    
-    .stProgress > div > div {
-        background-color: rgba(102, 126, 234, 0.1);
-        border-radius: 10px;
-    }
-    
     /* Responsive Design */
     @media (max-width: 768px) {
         .hero-title {
@@ -601,25 +590,6 @@ def local_css():
         box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
     }
     
-    /* Download Button */
-    .download-btn {
-        background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
-        color: white;
-        padding: 0.9rem 2.2rem;
-        border-radius: 30px;
-        text-decoration: none;
-        font-weight: 700;
-        display: inline-block;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
-    }
-    
-    .download-btn:hover {
-        transform: translateY(-3px) scale(1.05);
-        box-shadow: 0 8px 25px rgba(76, 175, 80, 0.5);
-        color: white;
-    }
-    
     /* Floating Animation */
     @keyframes float {
         0%, 100% {
@@ -655,7 +625,7 @@ def home_section():
     st.markdown('<div class="hero-section" id="home">', unsafe_allow_html=True)
     
     st.markdown('<h1 class="hero-title">Sandesh Bhattarai</h1>', unsafe_allow_html=True)
-    st.markdown('<p class="hero-subtitle">AI/ML Engineer • Educator • Full Stack Developer</p>', unsafe_allow_html=True)
+    st.markdown('<p class="hero-subtitle">AI/ML Engineer • Full Stack Developer</p>', unsafe_allow_html=True)
     
     # Quick Stats
     col1, col2, col3, col4 = st.columns(4)
@@ -679,16 +649,16 @@ def home_section():
     with col3:
         st.markdown("""
         <div class="stat-box">
-            <div class="stat-number">500+</div>
-            <div class="stat-label">Students Taught</div>
+            <div class="stat-number">5+</div>
+            <div class="stat-label">Technologies Mastered</div>
         </div>
         """, unsafe_allow_html=True)
     
     with col4:
         st.markdown("""
         <div class="stat-box">
-            <div class="stat-number">15+</div>
-            <div class="stat-label">Technologies</div>
+            <div class="stat-number">∞</div>
+            <div class="stat-label">Lines of Code</div>
         </div>
         """, unsafe_allow_html=True)
     
@@ -712,25 +682,24 @@ def about_section():
         st.markdown("""
         <div class="card">
             <p class="card-text">
-                I'm a passionate <strong>AI/ML engineer</strong> and <strong>educator</strong> dedicated to 
-                building intelligent systems and empowering the next generation of developers. Currently teaching 
-                Computer Science at <strong>Canon Secondary School</strong>, I blend technical expertise with 
-                pedagogical skills to create impactful learning experiences.
+                I'm a passionate <strong>AI/ML engineer</strong> and <strong>full-stack developer</strong> 
+                dedicated to building intelligent systems that solve real-world problems. My journey in tech 
+                spans from developing production-ready <strong>MERN stack applications</strong> to designing 
+                <strong>deep learning models</strong> for complex challenges.
             </p>
             <p class="card-text">
-                My technical journey spans from developing production-ready <strong>MERN stack applications</strong> 
-                to designing <strong>deep learning models</strong> for real-world problems. During my internship at 
-                <strong>Web Networks Pvt. Ltd.</strong>, I honed my full-stack development skills, building 
-                scalable web applications and RESTful APIs.
+                During my internship at <strong>Web Networks Pvt. Ltd.</strong>, I honed my full-stack 
+                development skills, building scalable web applications and RESTful APIs. I've worked on 
+                diverse projects ranging from job recommendation systems to computer vision applications.
             </p>
             <p class="card-text">
                 I'm driven by curiosity and a commitment to continuous learning. Whether it's experimenting with 
-                the latest LLM architectures, contributing to open-source projects, or mentoring students through 
-                complex programming challenges, I'm always seeking opportunities to grow and make an impact.
+                the latest LLM architectures, contributing to open-source projects, or optimizing neural networks 
+                for production, I'm always seeking opportunities to grow and make an impact.
             </p>
             <p class="card-text">
-                Beyond code, I'm fascinated by the intersection of AI and privacy-preserving technologies, 
-                particularly in wireless network applications.
+                Beyond development, I'm fascinated by the intersection of AI and various domains including 
+                healthcare, recommendation systems, and intelligent automation.
             </p>
         </div>
         """, unsafe_allow_html=True)
@@ -741,10 +710,9 @@ def about_section():
             <h3 class="card-title">Quick Facts</h3>
             <p class="card-text">👤 <strong>Name:</strong> Sandesh Bhattarai</p>
             <p class="card-text">📍 <strong>Based in:</strong> Nepal</p>
-            <p class="card-text">🎓 <strong>Role:</strong> Teacher & Developer</p>
-            <p class="card-text">💼 <strong>Focus:</strong> AI/ML & Web Dev</p>
+            <p class="card-text">💼 <strong>Focus:</strong> AI/ML & Full Stack</p>
             <p class="card-text">🌐 <strong>Stack:</strong> MERN + PyTorch</p>
-            <p class="card-text">🤖 <strong>Interest:</strong> LLMs & Privacy Tech</p>
+            <p class="card-text">🤖 <strong>Interest:</strong> ML, DL, LLMs, RL</p>
             <p class="card-text">📧 <strong>Email:</strong> sandeshbhattarai6@gmail.com</p>
         </div>
         """, unsafe_allow_html=True)
@@ -754,24 +722,19 @@ def about_section():
     <div class="research-box">
         <h3 style="color: #667eea; margin-bottom: 1.2rem; font-weight: 700; font-size: 1.5rem;">🔬 Research Interests</h3>
         <p style="color: #333; line-height: 1.9; font-size: 1.05rem;">
-            I am particularly interested in <strong>Large Language Models (LLMs)</strong> and 
-            <strong>Deep Learning Models</strong> and their applications in wireless networks for 
-            preserving privacy and enhancing performance. This intersection of AI and network 
-            technology represents the future of secure, intelligent communication systems.
-        </p>
-        <p style="color: #555; margin-top: 1.2rem; font-size: 0.95rem;">
-            💡 <em>Current exploration areas:</em> Federated learning, privacy-preserving ML, 
-            edge computing optimization, and neural network compression for IoT devices.
+            I have a strong interest in <strong>machine learning</strong> and its more advanced areas. 
+            I am particularly interested in <strong>deep learning models</strong>, 
+            <strong>Large Language Models (LLMs)</strong> and <strong>Reinforcement Learning</strong> 
+            and their uses in decision-making systems, optimization processes and across different domains 
+            such as recommendation systems, healthcare, and intelligent automation.
         </p>
     </div>
     """, unsafe_allow_html=True)
 
 def experience_section():
-    st.markdown('<h2 class="section-header" id="experience">Professional Journey</h2>', unsafe_allow_html=True)
+    st.markdown('<h2 class="section-header" id="experience">Professional Experience</h2>', unsafe_allow_html=True)
     
     # Teaching Experience
-    st.markdown("### 👨‍🏫 Teaching Experience")
-    
     st.markdown("""
     <div class="timeline-item">
         <p class="timeline-date">August 2024 - Present</p>
@@ -795,8 +758,6 @@ def experience_section():
     """, unsafe_allow_html=True)
     
     # Work Experience
-    st.markdown("### 💼 Industry Experience")
-    
     st.markdown("""
     <div class="timeline-item">
         <p class="timeline-date">April 2024 - July 2024</p>
@@ -869,9 +830,6 @@ def projects_section():
             <a href="https://github.com/sandeshbhattarai101/CodeJobsNepal" target="_blank" class="custom-button">
                 <span style="position: relative; z-index: 1;">View on GitHub</span>
             </a>
-            <a href="#contact" class="custom-button">
-                <span style="position: relative; z-index: 1;">Request Demo</span>
-            </a>
         </div>
         """, unsafe_allow_html=True)
     
@@ -917,82 +875,11 @@ def projects_section():
             <a href="https://github.com/sandeshbhattarai101/VenomousSnakeClassifier" target="_blank" class="custom-button">
                 <span style="position: relative; z-index: 1;">View on GitHub</span>
             </a>
-            <a href="#contact" class="custom-button">
-                <span style="position: relative; z-index: 1;">Try Model</span>
-            </a>
-        </div>
-        """, unsafe_allow_html=True)
-    
-    # Additional Projects
-    st.markdown("### 🌟 Other Notable Projects")
-    
-    col1, col2, col3 = st.columns(3)
-    
-    with col1:
-        st.markdown("""
-        <div class="card" style="min-height: 320px;">
-            <h4 class="card-subtitle">📚 EduShare Platform</h4>
-            <p class="card-text">
-                Collaborative platform for educators to share lesson plans, teaching resources, 
-                and educational materials with the global teaching community.
-            </p>
-            <p class="card-text" style="font-size: 0.9rem;">
-                <strong>Features:</strong><br>
-                • Secure file upload & storage<br>
-                • Advanced categorization<br>
-                • Full-text search<br>
-                • User authentication
-            </p>
-            <span class="project-tag">React</span>
-            <span class="project-tag">Node.js</span>
-            <span class="project-tag">MongoDB</span>
-        </div>
-        """, unsafe_allow_html=True)
-    
-    with col2:
-        st.markdown("""
-        <div class="card" style="min-height: 320px;">
-            <h4 class="card-subtitle">📊 DataViz Dashboard</h4>
-            <p class="card-text">
-                Interactive data visualization dashboard with real-time updates, 
-                multiple chart types, and advanced filtering for business analytics.
-            </p>
-            <p class="card-text" style="font-size: 0.9rem;">
-                <strong>Features:</strong><br>
-                • Real-time data streaming<br>
-                • Export functionality<br>
-                • Responsive charts<br>
-                • Custom metrics
-            </p>
-            <span class="project-tag">Python</span>
-            <span class="project-tag">Streamlit</span>
-            <span class="project-tag">Plotly</span>
-        </div>
-        """, unsafe_allow_html=True)
-    
-    with col3:
-        st.markdown("""
-        <div class="card" style="min-height: 320px;">
-            <h4 class="card-subtitle">🤖 CS Learning Bot</h4>
-            <p class="card-text">
-                AI-powered chatbot assistant helping students understand computer science 
-                concepts through interactive, context-aware conversations.
-            </p>
-            <p class="card-text" style="font-size: 0.9rem;">
-                <strong>Features:</strong><br>
-                • NLP processing<br>
-                • Context awareness<br>
-                • Multi-topic support<br>
-                • Code examples
-            </p>
-            <span class="project-tag">Python</span>
-            <span class="project-tag">NLP</span>
-            <span class="project-tag">TensorFlow</span>
         </div>
         """, unsafe_allow_html=True)
 
 def skills_section():
-    st.markdown('<h2 class="section-header" id="skills">Skills & Expertise</h2>', unsafe_allow_html=True)
+    st.markdown('<h2 class="section-header" id="skills">Skills & Technologies</h2>', unsafe_allow_html=True)
     
     col1, col2, col3 = st.columns(3)
     
@@ -1036,37 +923,6 @@ def skills_section():
         </div>
         """, unsafe_allow_html=True)
     
-    # Skill Proficiency
-    st.markdown("### 📊 Proficiency Levels")
-    
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        skills_left = {
-            "Python & Machine Learning": 95,
-            "Full Stack Development": 90,
-            "Deep Learning (PyTorch)": 85,
-            "Data Analysis": 88,
-        }
-        
-        for skill, level in skills_left.items():
-            st.markdown(f"**{skill}**")
-            st.progress(level / 100)
-            st.markdown(f"<p style='text-align: right; color: #667eea; margin-top: -0.8rem; font-weight: 600; font-size: 0.95rem;'>{level}%</p>", unsafe_allow_html=True)
-    
-    with col2:
-        skills_right = {
-            "RESTful API Development": 90,
-            "Database Management": 85,
-            "Version Control (Git)": 92,
-            "Teaching & Mentoring": 95,
-        }
-        
-        for skill, level in skills_right.items():
-            st.markdown(f"**{skill}**")
-            st.progress(level / 100)
-            st.markdown(f"<p style='text-align: right; color: #667eea; margin-top: -0.8rem; font-weight: 600; font-size: 0.95rem;'>{level}%</p>", unsafe_allow_html=True)
-    
     # Domain Expertise
     st.markdown("### 🎯 Domain Expertise")
     
@@ -1077,12 +933,13 @@ def skills_section():
         <div class="card">
             <h4 class="card-subtitle">🤖 Artificial Intelligence</h4>
             <p class="card-text">
-                • Large Language Models<br>
+                • Machine Learning<br>
                 • Deep Learning & CNNs<br>
+                • Large Language Models<br>
+                • Reinforcement Learning<br>
                 • Computer Vision<br>
-                • Recommendation Systems<br>
                 • Natural Language Processing<br>
-                • Model Optimization
+                • Recommendation Systems
             </p>
         </div>
         """, unsafe_allow_html=True)
@@ -1097,7 +954,8 @@ def skills_section():
                 • Authentication & Security<br>
                 • Responsive Design<br>
                 • Database Architecture<br>
-                • Version Control
+                • Version Control<br>
+                • Agile Methodologies
             </p>
         </div>
         """, unsafe_allow_html=True)
@@ -1105,14 +963,15 @@ def skills_section():
     with col3:
         st.markdown("""
         <div class="card">
-            <h4 class="card-subtitle">👨‍🏫 Education</h4>
+            <h4 class="card-subtitle">📊 Data Science</h4>
             <p class="card-text">
-                • Curriculum Development<br>
-                • Python Programming<br>
-                • Algorithms & DS<br>
-                • Web Technologies<br>
-                • Student Mentoring<br>
-                • Assessment Design
+                • Data Analysis<br>
+                • Data Visualization<br>
+                • Statistical Modeling<br>
+                • Feature Engineering<br>
+                • Model Optimization<br>
+                • Predictive Analytics<br>
+                • Data Preprocessing
             </p>
         </div>
         """, unsafe_allow_html=True)
@@ -1130,15 +989,14 @@ def contact_section():
                 <strong>👤 Name:</strong> Sandesh Bhattarai<br>
                 <strong>📧 Email:</strong> <a href="mailto:sandeshbhattarai6@gmail.com" style="color: #667eea; text-decoration: none; font-weight: 600;">sandeshbhattarai6@gmail.com</a><br>
                 <strong>📍 Location:</strong> Nepal<br>
-                <strong>💼 Role:</strong> CS Teacher & Developer<br>
-                <strong>🎓 Organization:</strong> Canon Secondary School
+                <strong>💼 Focus:</strong> AI/ML & Full Stack Development
             </p>
             <br>
             <h3 class="card-title">🌐 Let's Collaborate</h3>
             <p class="card-text">
-                I'm always excited to connect with fellow developers, educators, researchers, 
-                and innovators. Whether you have a project idea, collaboration opportunity, 
-                or just want to chat about AI and technology, I'd love to hear from you!
+                I'm always excited to connect with fellow developers, researchers, and innovators. 
+                Whether you have a project idea, collaboration opportunity, or just want to chat 
+                about AI and technology, I'd love to hear from you!
             </p>
             <p class="card-text">
                 Feel free to reach out via email or connect with me on social platforms. 
@@ -1194,10 +1052,9 @@ def contact_section():
             <h4 class="card-subtitle">💡 Open To:</h4>
             <p class="card-text" style="font-size: 0.95rem;">
                 ✓ AI/ML Development Roles<br>
-                ✓ Full Stack Projects<br>
+                ✓ Full Stack Development Projects<br>
                 ✓ Research Collaborations<br>
-                ✓ Freelance Work<br>
-                ✓ Teaching Opportunities<br>
+                ✓ Freelance Opportunities<br>
                 ✓ Open Source Contributions
             </p>
         </div>
@@ -1223,7 +1080,7 @@ def footer():
             © 2024 <strong>Sandesh Bhattarai</strong> • All Rights Reserved
         </p>
         <p style="font-size: 0.85rem; margin-top: 1rem; color: #999;">
-            🤖 AI Enthusiast • 👨‍🏫 Educator • 💻 Problem Solver
+            🤖 AI/ML Engineer • 💻 Full Stack Developer • 🔬 Researcher
         </p>
     </div>
     """, unsafe_allow_html=True)
