@@ -1,6 +1,5 @@
 import streamlit as st
-from pathlib import Path
-import base64
+from streamlit.components.v1 import html
 
 # ========== PAGE CONFIG ==========
 st.set_page_config(
@@ -108,6 +107,7 @@ def local_css():
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
         overflow: hidden;
+        cursor: pointer;
     }
     
     .nav-link::before {
@@ -540,6 +540,14 @@ def local_css():
         font-weight: 500;
     }
     
+    /* Section Anchors for Navigation */
+    .section-anchor {
+        display: block;
+        position: relative;
+        top: -100px;
+        visibility: hidden;
+    }
+    
     /* Responsive Design */
     @media (max-width: 768px) {
         .hero-title {
@@ -607,22 +615,60 @@ def local_css():
     </style>
     """, unsafe_allow_html=True)
 
+# ========== JAVASCRIPT FOR SMOOTH SCROLLING ==========
+def inject_scroll_script():
+    scroll_script = """
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Function to scroll to element
+        function scrollToElement(elementId) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                const yOffset = -100; // Offset for fixed header
+                const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                window.scrollTo({top: y, behavior: 'smooth'});
+            }
+        }
+        
+        // Add click listeners to all nav links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('data-target');
+                scrollToElement(targetId);
+            });
+        });
+        
+        // Also handle regular anchor clicks
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                scrollToElement(targetId);
+            });
+        });
+    });
+    </script>
+    """
+    html(scroll_script, height=0)
+
 # ========== NAVIGATION ==========
 def navigation():
     st.markdown("""
     <div class="nav-container">
-        <a href="#home" class="nav-link">🏠 Home</a>
-        <a href="#about" class="nav-link">👤 About</a>
-        <a href="#experience" class="nav-link">💼 Experience</a>
-        <a href="#projects" class="nav-link">🚀 Projects</a>
-        <a href="#skills" class="nav-link">⚡ Skills</a>
-        <a href="#contact" class="nav-link">📧 Contact</a>
+        <span class="nav-link" data-target="home" onclick="document.getElementById('home').scrollIntoView({behavior: 'smooth', block: 'start'})">🏠 Home</span>
+        <span class="nav-link" data-target="about" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth', block: 'start'})">👤 About</span>
+        <span class="nav-link" data-target="experience" onclick="document.getElementById('experience').scrollIntoView({behavior: 'smooth', block: 'start'})">💼 Experience</span>
+        <span class="nav-link" data-target="projects" onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth', block: 'start'})">🚀 Projects</span>
+        <span class="nav-link" data-target="skills" onclick="document.getElementById('skills').scrollIntoView({behavior: 'smooth', block: 'start'})">⚡ Skills</span>
+        <span class="nav-link" data-target="contact" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth', block: 'start'})">📧 Contact</span>
     </div>
     """, unsafe_allow_html=True)
 
 # ========== SECTIONS ==========
 def home_section():
-    st.markdown('<div class="hero-section" id="home">', unsafe_allow_html=True)
+    st.markdown('<span id="home" class="section-anchor"></span>', unsafe_allow_html=True)
+    st.markdown('<div class="hero-section">', unsafe_allow_html=True)
     
     st.markdown('<h1 class="hero-title">Sandesh Bhattarai</h1>', unsafe_allow_html=True)
     st.markdown('<p class="hero-subtitle">AI/ML Engineer • Full Stack Developer</p>', unsafe_allow_html=True)
@@ -666,15 +712,20 @@ def home_section():
     with col2:
         st.markdown("""
         <div style="text-align: center; margin-top: 2.5rem;">
-            <a href="#contact" class="custom-button">Let's Connect</a>
-            <a href="#projects" class="custom-button">View Work</a>
+            <span class="custom-button" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth', block: 'start'})">
+                <span style="position: relative; z-index: 1;">Let's Connect</span>
+            </span>
+            <span class="custom-button" onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth', block: 'start'})">
+                <span style="position: relative; z-index: 1;">View Work</span>
+            </span>
         </div>
         """, unsafe_allow_html=True)
     
     st.markdown('</div>', unsafe_allow_html=True)
 
 def about_section():
-    st.markdown('<h2 class="section-header" id="about">About Me</h2>', unsafe_allow_html=True)
+    st.markdown('<span id="about" class="section-anchor"></span>', unsafe_allow_html=True)
+    st.markdown('<h2 class="section-header">About Me</h2>', unsafe_allow_html=True)
     
     col1, col2 = st.columns([2,1])
     
@@ -732,7 +783,8 @@ def about_section():
     """, unsafe_allow_html=True)
 
 def experience_section():
-    st.markdown('<h2 class="section-header" id="experience">Professional Experience</h2>', unsafe_allow_html=True)
+    st.markdown('<span id="experience" class="section-anchor"></span>', unsafe_allow_html=True)
+    st.markdown('<h2 class="section-header">Professional Experience</h2>', unsafe_allow_html=True)
     
     # Teaching Experience
     st.markdown("""
@@ -782,7 +834,8 @@ def experience_section():
     """, unsafe_allow_html=True)
 
 def projects_section():
-    st.markdown('<h2 class="section-header" id="projects">Featured Projects</h2>', unsafe_allow_html=True)
+    st.markdown('<span id="projects" class="section-anchor"></span>', unsafe_allow_html=True)
+    st.markdown('<h2 class="section-header">Featured Projects</h2>', unsafe_allow_html=True)
     
     # Project 1 - CodeJobsNepal
     col1, col2 = st.columns([1, 1])
@@ -879,7 +932,8 @@ def projects_section():
         """, unsafe_allow_html=True)
 
 def skills_section():
-    st.markdown('<h2 class="section-header" id="skills">Skills & Technologies</h2>', unsafe_allow_html=True)
+    st.markdown('<span id="skills" class="section-anchor"></span>', unsafe_allow_html=True)
+    st.markdown('<h2 class="section-header">Skills & Technologies</h2>', unsafe_allow_html=True)
     
     col1, col2, col3 = st.columns(3)
     
@@ -977,7 +1031,8 @@ def skills_section():
         """, unsafe_allow_html=True)
 
 def contact_section():
-    st.markdown('<h2 class="section-header" id="contact">Let\'s Connect</h2>', unsafe_allow_html=True)
+    st.markdown('<span id="contact" class="section-anchor"></span>', unsafe_allow_html=True)
+    st.markdown('<h2 class="section-header">Let\'s Connect</h2>', unsafe_allow_html=True)
     
     col1, col2 = st.columns([1, 1])
     
@@ -1069,12 +1124,12 @@ def footer():
             Crafted with ❤️ using <strong>Streamlit</strong> & <strong>Python</strong>
         </p>
         <p style="font-size: 0.95rem; margin-bottom: 1rem;">
-            <a href="#home" style="color: #667eea; text-decoration: none; margin: 0 0.5rem; font-weight: 500;">Home</a> •
-            <a href="#about" style="color: #667eea; text-decoration: none; margin: 0 0.5rem; font-weight: 500;">About</a> •
-            <a href="#experience" style="color: #667eea; text-decoration: none; margin: 0 0.5rem; font-weight: 500;">Experience</a> •
-            <a href="#projects" style="color: #667eea; text-decoration: none; margin: 0 0.5rem; font-weight: 500;">Projects</a> •
-            <a href="#skills" style="color: #667eea; text-decoration: none; margin: 0 0.5rem; font-weight: 500;">Skills</a> •
-            <a href="#contact" style="color: #667eea; text-decoration: none; margin: 0 0.5rem; font-weight: 500;">Contact</a>
+            <span class="nav-link" style="display: inline-block; cursor: pointer;" onclick="document.getElementById('home').scrollIntoView({behavior: 'smooth', block: 'start'})">Home</span> •
+            <span class="nav-link" style="display: inline-block; cursor: pointer;" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth', block: 'start'})">About</span> •
+            <span class="nav-link" style="display: inline-block; cursor: pointer;" onclick="document.getElementById('experience').scrollIntoView({behavior: 'smooth', block: 'start'})">Experience</span> •
+            <span class="nav-link" style="display: inline-block; cursor: pointer;" onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth', block: 'start'})">Projects</span> •
+            <span class="nav-link" style="display: inline-block; cursor: pointer;" onclick="document.getElementById('skills').scrollIntoView({behavior: 'smooth', block: 'start'})">Skills</span> •
+            <span class="nav-link" style="display: inline-block; cursor: pointer;" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth', block: 'start'})">Contact</span>
         </p>
         <p style="font-size: 0.9rem; color: #999; margin-top: 1.5rem;">
             © 2024 <strong>Sandesh Bhattarai</strong> • All Rights Reserved
